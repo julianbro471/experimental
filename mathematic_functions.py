@@ -47,3 +47,16 @@ def cost_function_derivative(output_activations: np.ndarray, y: np.ndarray) -> n
     Derivatives (np.ndarray)    
     """
     return (output_activations - y)
+
+def softmax_function(x: np.ndarray) -> np.ndarray:
+    """
+    Computes softmax.
+
+    Parameters:
+    x (np.ndarray): Input scores.
+
+    Returns:
+    np.ndarray: Probabilities in the range (0, 1).
+    """
+    e = np.exp(x - np.max(x, axis=0, keepdims=True))
+    return e / np.sum(e, axis=0, keepdims=True)
